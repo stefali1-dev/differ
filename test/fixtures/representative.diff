@@ -1,0 +1,49 @@
+diff --git a/libs/auth/provider.py b/libs/auth/provider.py
+index 1111111..2222222 100644
+--- a/libs/auth/provider.py
++++ b/libs/auth/provider.py
+@@ -43,5 +43,7 @@ class Provider:
+     def authenticate(self, request):
+-        if not token:
+-            raise AuthenticationFailed("No token provided")
++        if not token or not token.startswith("Bearer "):
++            logger.warning("Invalid token format")
++            raise AuthenticationFailed("Invalid token")
+         return token
+@@ -70,3 +72,4 @@ class Provider:
+     def logout(self):
+-        return None
++        audit("logout")
++        return None
+diff --git a/config/settings.yml b/config/settings.yml
+index 3333333..4444444 100644
+--- a/config/settings.yml
++++ b/config/settings.yml
+@@ -14,3 +14,3 @@ auth:
+-  algorithm: HS256
++  algorithm: RS256
+   allow_refresh: true
+diff --git a/docs/old-name.md b/docs/new-name.md
+similarity index 90%
+rename from docs/old-name.md
+rename to docs/new-name.md
+index 5555555..6666666 100644
+--- a/docs/old-name.md
++++ b/docs/new-name.md
+@@ -1,2 +1,2 @@
+-# Old title
++# New title
+ Body
+diff --git a/assets/logo.png b/assets/logo.png
+index 7777777..8888888 100644
+Binary files a/assets/logo.png and b/assets/logo.png differ
+diff --git a/notes/empty.txt b/notes/empty.txt
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/notes/empty.txt
+diff --git a/config/old.json b/config/old.json
+deleted file mode 100644
+index e69de29..0000000
+--- a/config/old.json
++++ /dev/null

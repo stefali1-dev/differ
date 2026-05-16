@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# generated build output
+dist/
+
+# local agent/workspace notes
+AGENTS.md
+.agents/
+
+# editor / OS noise
+.DS_Store
+.vscode/
+.idea/

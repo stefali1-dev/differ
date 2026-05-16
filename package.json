@@ -1,0 +1,22 @@
+{
+  "name": "differ",
+  "version": "1.0.0",
+  "description": "Local browser UI for reviewing unified Git diffs",
+  "main": "dist/index.js",
+  "bin": {
+    "differ": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "playwright": "^1.60.0",
+    "typescript": "^6.0.3"
+  }
+}
