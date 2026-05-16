@@ -38,4 +38,10 @@ describe('renderPage', () => {
       /<td class="line-number">46<\/td><td class="code-cell">         return token<\/td>\s*<td class="line-number split-divider">47<\/td>/,
     );
   });
+
+  it('keeps horizontal scrolling at view level instead of per line', () => {
+    assert.match(html, /\.unified-view,\s*\.split-view \{\s*overflow-x: auto;/);
+    assert.match(html, /\.diff-table \{\s*width: max-content;\s*min-width: 100%;/);
+    assert.doesNotMatch(html, /\.code-cell \{[^}]*overflow-x: auto;/s);
+  });
 });

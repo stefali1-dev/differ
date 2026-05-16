@@ -7,7 +7,7 @@
     "differ": "./dist/cli.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x dist/cli.js",
     "test": "npm run build && node --test test/*.test.cjs"
   },
   "keywords": [],

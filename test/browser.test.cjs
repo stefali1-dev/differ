@@ -124,4 +124,24 @@ ${largeBody}`;
       assert.equal(selected.startsWith('-'), true);
     });
   });
+
+  it('uses one horizontal scroller for long diff lines', async () => {
+    const longLine = 'x'.repeat(220);
+    const longDiff = `diff --git a/long.txt b/long.txt
+--- a/long.txt
++++ b/long.txt
+@@ -1 +1 @@
+-${longLine}
++${longLine}`;
+
+    await withPage(async (page) => {
+      const view = page.locator('.unified-view').first();
+      const cells = page.locator('.unified-view .code-cell');
+      assert.equal(await view.evaluate((node) => node.scrollWidth > node.clientWidth), true);
+      assert.deepEqual(
+        await cells.evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).overflowX)),
+        ['visible', 'visible'],
+      );
+    }, longDiff);
+  });
 });

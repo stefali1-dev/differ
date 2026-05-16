@@ -88,6 +88,7 @@ main {
   gap: 16px;
 }
 .file-card {
+  min-width: 0;
   overflow: clip;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -169,6 +170,10 @@ main {
 }
 .file-body { display: block; }
 .file-card.is-collapsed .file-body { display: none; }
+.unified-view,
+.split-view {
+  overflow-x: auto;
+}
 .hunk-header, .empty-summary, .binary-summary {
   padding: 8px 14px;
   color: var(--muted);
@@ -178,9 +183,9 @@ main {
   font-size: 12px;
 }
 .diff-table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
   font-family: var(--mono);
   font-size: 13px;
   line-height: 20px;
@@ -197,7 +202,6 @@ main {
 .code-cell {
   padding: 0 12px;
   white-space: pre;
-  overflow-x: auto;
 }
 .line-insert td { background: var(--green-bg); }
 .line-delete td { background: var(--red-bg); }
